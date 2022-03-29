@@ -16,38 +16,38 @@ public class BookControllerResponseEntity {
     private final BookService service;
 
     @GetMapping("/book")
-    public ResponseEntity<List<Book>> listOfBooks(){
+    public ResponseEntity<List<Book>> listOfResBooks(){
         List<Book> listBook = service.listofBooks();
         if (listBook == null) return ResponseEntity.notFound().build();
         else return ResponseEntity.ok(listBook);
     }
 
     @GetMapping("/book/{id}")
-    public ResponseEntity<Book> consulteBook(@PathVariable String id){
+    public ResponseEntity<Book> consulteResBook(@PathVariable String id){
         Book book = service.consultBookPerId(id);
         if (book == null) return ResponseEntity.notFound().build();
         else return ResponseEntity.ok(book);
     }
 
     @GetMapping("/book/author/{author}")
-    public ResponseEntity<List<Book>> consultAuthor(@PathVariable String author){
+    public ResponseEntity<List<Book>> consultResAuthor(@PathVariable String author){
         List<Book> listAuthor = service.listBooksPerAuthor(author);
         if (listAuthor == null) return ResponseEntity.notFound().build();
         else return ResponseEntity.ok(listAuthor);
     }
     @PostMapping("/book/creat")
-    public ResponseEntity<Book> createBook(@RequestBody Book newBook){
+    public ResponseEntity<Book> createResBook(@RequestBody Book newBook){
         Book book = service.addBook(newBook);
         return new ResponseEntity<Book>(book, HttpStatus.CREATED);
     }
     @DeleteMapping("/book/{id}")
-    public ResponseEntity<Book> deleteBook(@PathVariable String id){
+    public ResponseEntity<Book> deleteResBook(@PathVariable String id){
         Book book = service.consultBookPerId(id);
         if (book == null) return ResponseEntity.notFound().build();
         else return ResponseEntity.noContent().build();
     }
     @PutMapping("/book")
-    public ResponseEntity<Book> modifyBook(@RequestBody Book newBook){
+    public ResponseEntity<Book> modifyResBook(@RequestBody Book newBook){
         Book book = service.modifyBook(newBook);
         if (book == null) return ResponseEntity.notFound().build();
         else return ResponseEntity.ok(book);
