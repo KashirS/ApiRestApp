@@ -27,11 +27,6 @@ public class EmployeeController {
         return service.listBooksPerAuthor(author);
     }
 
-    @GetMapping("/book/desctription/{description}")
-    public List<Book> bookDescription(@PathVariable String description){
-        return service.listBooksPerDescription(description);
-    }
-
     @PostMapping("/book/create")
     public Book createBook(@RequestBody Book newBook){
         return service.addBook(newBook);
@@ -43,7 +38,7 @@ public class EmployeeController {
     }
 
     @PutMapping("/book")
-    public Book modifyBook(@RequestParam Book modify){
+    public Book modifyBook(@RequestBody Book modify){
         return service.modifyBook(modify);
     }
 }
