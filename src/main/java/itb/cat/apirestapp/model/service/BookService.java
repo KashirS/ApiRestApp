@@ -21,10 +21,6 @@ public class BookService {
         return repo.findByAuthor(author);
     }
 
-    public List<Book> listBooksPerDescription(String description){
-        return repo.findByDescription(description);
-    }
-
     public Book consultBookPerId(String id){
         return repo.findById(id).orElse(null);
     }
